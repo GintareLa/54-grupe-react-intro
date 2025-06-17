@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import style from './Todo.module.css';
 import { randomNumber } from '../../lib/randomNumber';
@@ -59,17 +60,23 @@ export function Todo() {
     }
 
     return (
-        <div className={style.todo}>
-            <form onSubmit={handleFormSubmit} className={style.form}>
-                <input ref={inputRef} onChange={handleInputChange} value={text} className={style.input} type="text" />
-                <button className={style.btn} type="submit">Create</button>
-            </form>
-            <ul className={style.ul}>
-                {todoList && todoList.map(todo =>
-                    <TodoItem key={todo.id} data={todo}
-                        handleDeleteClick={handleDeleteClick}
-                        handleTextUpdate={handleTextUpdate} />)}
-            </ul>
+        <div className="container">
+            <div className="row">
+                <div className="col-12 col-md-6 col-lg-4">
+                    <div className={style.todo}>
+                        <form onSubmit={handleFormSubmit} className={style.form}>
+                            <input ref={inputRef} onChange={handleInputChange} value={text} className={style.input} type="text" />
+                            <button className={style.btn} type="submit">Create</button>
+                        </form>
+                        <ul className={style.ul}>
+                            {todoList && todoList.map(todo =>
+                                <TodoItem key={todo.id} data={todo}
+                                    handleDeleteClick={handleDeleteClick}
+                                    handleTextUpdate={handleTextUpdate} />)}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
