@@ -1,14 +1,14 @@
 
-export function GardenList({ list }) {
+export function GardenList({ list, removeFunc }) {
     return (
         <ol className="list-group list-group-numbered" style={{ marginTop: '2rem' }}>
             {list.map(item =>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
+                <li key={item.name} className="list-group-item d-flex justify-content-between align-items-start">
                     <div className="ms-2 me-auto">
                         <div className="fw-bold">{item.name}</div>
                     </div>
                     <span className="badge text-bg-primary rounded-pill">{item.amount}</span>
-                    <button className="badge text-bg-danger rounded-pill" style={{ border: 'none' }}>Remove</button>
+                    <button onClick={() => removeFunc(item.name)}className="badge text-bg-danger rounded-pill" style={{ border: 'none' }}>Remove</button>
                 </li>
             )}
         </ol>
